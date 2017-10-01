@@ -1,0 +1,119 @@
+<html>
+	<head>
+		<title>
+			Drag&Drop	
+		</title>
+		<script src="js/jquery-3.2.1.min.js"></script>
+		
+		
+		
+		<!--<script src="js/jquery.longclick.js"></script>-->
+		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+		<link href="https://fonts.googleapis.com/css?family=Raleway:200" rel="stylesheet">
+	</head>
+	<style>
+		/*body{
+		  cursor: url('path-to-image.png'), auto;	
+		}*/
+		.container
+		{
+			position:absolute;
+			width:31.5vh;
+			height:60vh;
+			left:50%;
+			top:50%;
+			transform:translate(-50%, -50%); 
+
+		}
+		.main.container{
+			overflow: hidden;
+		}
+		.temp.container{
+			overflow: visible;
+			height:50vh;
+		}
+		#back{
+			background:url('phone.png');
+			background-size: contain;
+			background-repeat: no-repeat;
+		}
+		#back{
+			background:url('phone.png');
+			background-size: contain;
+			background-repeat: no-repeat;
+		}
+		#motog3{
+			background:url('motog3.png');
+			background-size: contain;
+			background-repeat: no-repeat;
+		}
+		#fb{
+			position:absolute;
+			width:26.7vh;
+			height:46.9vh;
+			left:50%;
+			top:50%;
+			transform:translate(-50%, -50%); 
+			background:url('fbnew.png');
+			background-size: contain;
+			background-repeat: no-repeat;
+			transform-origin:50% 100%;
+			transition:opacity 0.1s 0.7s ease-in-out, transform 0.6s cubic-bezier(0.55, 0.06, 0.68, 0.19), border-radius 0.6s 0.2s ease-in-out;
+		}
+		#base{
+			background:url('bottom.png');
+			background-size: contain;
+			background-repeat: no-repeat;
+			transition:opacity 0.4s 0.8s ease-in-out;
+		}
+		#head{
+			background:url('head.png');
+			background-size: contain;
+			background-repeat: no-repeat;
+			transition:opacity 0.3s 0.7s ease-in-out;
+		}
+		.title{
+			position: absolute;
+			left:50%;
+			top: 10vh;
+			font-size: 3vh;
+			transform:translate(-50%,-50%);
+			font-family: 'Raleway', sans-serif;
+		}
+		
+
+	</style>
+	<body>
+		<div class="title">KILL APPS</div>
+		<div class="container main">
+			
+			<div id="motog3" class="container"></div>
+			<div class="container temp"><div id="fb"></div>
+			</div>
+			<div id="back" class="container"></div>
+			<div id="head" class="container"></div>
+			<div id="base" class="container"></div>
+		</div></body>
+		<script>
+			$(document).ready(function(){
+    			$("#base").click(1000,function(){
+				    $("#fb").css({'transform':'translate(-50%,-50%) scaleY(0.01) scaleX(0.05)','opacity':'0','border-radius':'50% 50% 50% 50%'});
+				    $("#head").css({'opacity':'0'});
+				    $("#base").css({'opacity':'0'});
+				});
+			});
+
+
+		
+
+			
+
+
+
+
+
+
+
+		</script>
+	</body>
+</html>
