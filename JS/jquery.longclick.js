@@ -114,7 +114,7 @@
       /* Flag as "fired" and rejoin the default event flow */
       $(element).data(_fired_, true)
       event.type= type
-      jQuery.event.handle.apply('#base', args)
+      jQuery.event.handle.apply(element, args)
     }
   }
   function annul(event){

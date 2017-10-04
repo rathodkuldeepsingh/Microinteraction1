@@ -1,13 +1,13 @@
 <html>
 	<head>
 		<title>
-			Drag&Drop	
+			Kill Apps	
 		</title>
 		<script src="JS/jquery-3.2.1.min.js"></script>
 		
 		
 		
-		<!--<script src="JS/jquery.longclick.js"></script>-->
+		<script src="JS/jquery.longclick.js"></script>
 		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 		<link href="https://fonts.googleapis.com/css?family=Raleway:200" rel="stylesheet">
 	</head>
@@ -64,7 +64,8 @@
 			background:url('bottom.png');
 			background-size: contain;
 			background-repeat: no-repeat;
-			transition:opacity 0.4s 0.8s ease-in-out;
+			transition:opacity 0.4s 0.6s ease-in-out;
+			overflow: hidden;
 		}
 		#head{
 			background:url('head.png');
@@ -80,11 +81,63 @@
 			transform:translate(-50%,-50%);
 			font-family: 'Raleway', sans-serif;
 		}
+		.clk{
+			background:rgba(200,200,200,0.35);
+			position: absolute;
+			left:12%;
+			top:-18%;
+			width:5.5vh;
+			height: 4.5vh;
+			border-radius: 50%; 
+			transform-origin: 50% 50%;
+			transform: scale(0.3);
+			opacity: 0;
+			transition: transform 0.5s ease-in-out, opacity 0.2s ease-in-out;	
+		}
+		.ewei{
+			position: absolute;
+			width:26vh;
+			height: 3.4vh;
+			top:82.8%;
+			left:9%;
+			
+			overflow:hidden;
+
+		}
+		.info{
+			position: absolute;
+			left:50%;
+			top: 85vh;
+			font-size: 2vh;
+			transform:translate(-50%,-50%);
+			font-family: 'Raleway', sans-serif;
+		}
+		.b, .f{
+			height:8vh;
+			width:6vh;
+			
+			position: fixed;
+			top:40vh;
+		}
+		.b{	left: 5vh;
+			background: url("back.png") no-repeat center;
+			background-size: contain;
+
+		}
+		.f{
+			background: url("forward.png") no-repeat center;
+			background-size: contain;
+			right: 5vh;
+		}
+
 		
 
 	</style>
 	<body>
 		<div class="title">KILL APPS</div>
+		<div class="info">Longpress on the back button to exit the application</div>
+		<a href="https://rathodkuldeepsingh.github.io/microinteraction2/"><div class="b"></div></a>
+		<a href="https://rathodkuldeepsingh.github.io/microinteraction5/"><div class="f"></div></a>
 		<div class="container main">
 			
 			<div id="motog3" class="container"></div>
@@ -92,16 +145,71 @@
 			</div>
 			<div id="back" class="container"></div>
 			<div id="head" class="container"></div>
-			<div id="base" class="container"></div>
+			<div id="base" class="container">
+			</div>
+			<div class="ewei"><div class="clk"></div></div>
+			
 		</div></body>
 		<script>
 			$(document).ready(function(){
+    			
+				// how many milliseconds is a long press?
+			    var longpress = 3000;
+			    // holds the start time
+			    var start;
+
+			    jQuery( ".clk" ).on( 'mousedown', function( e ) {
+			        start = new Date().getTime();
+			        $('.clk').css({'transform':'scale(1)','opacity':'1'});
+			       	resetTimer(true);
+			        
+			    } );
+
+			    jQuery( ".clk" ).on( 'mouseleave', function( e ) {
+			        start = 0;
+			        resetTimer(false);
+			         $('.clk').css({'opacity':'0'});
+			    } );
+
+			   
+
+			   	
+
+
+
     			$("#base").click(1000,function(){
 				    $("#fb").css({'transform':'translate(-50%,-50%) scaleY(0.01) scaleX(0.05)','opacity':'0','border-radius':'50% 50% 50% 50%'});
 				    $("#head").css({'opacity':'0'});
 				    $("#base").css({'opacity':'0'});
 				});
 			});
+
+			function resetTimer(a){
+    				
+    				
+						if(a)
+						{
+						window.timer= setTimeout(timerFired, 1000);
+    					}else{
+    					clearTimeout(window.timer);
+    					}
+    					
+    			};	
+
+
+		
+    			window.timerFired = function() {
+				   
+				  	
+			       
+			        $("#fb").css({'transform':'translate(-50%,-50%) scaleY(0.01) scaleX(0.05)','opacity':'0','border-radius':'50% 50% 50% 50%'});
+				    $("#head").css({'opacity':'0'});
+				    $("#base").css({'opacity':'0'});
+
+
+				    window.myTimer = setTimeout(timerFired, 1000);
+					
+				};
 
 
 		
